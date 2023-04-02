@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 
 const App = () => {
-  const [feedback, setFeedback] = useState([
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel velit mauris. Quisque vel dolor ac magna euismod hendrerit. Donec tempor, nibh nec lacinia bibendum, purus lorem fermentum turpis, ac molestie dolor magna et lectus.`,
-    `Fusce lacinia, sapien ac convallis commodo, quam erat semper dui, quis rutrum velit tortor in dui. Fusce aliquet euismod justo non commodo. Sed laoreet ante id enim rhoncus consequat. Donec ut leo eget nisi suscipit ultricies.`,
-  ]);
+  const [feedback, setFeedback] = useState([]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // Add code to analyze the text and update the feedback state
+
+    // Get the text from the form
+    const text = event.target.text.value;
+    console.log(text);
+
+    // Analyze the text
+    
+
+    // Set the feedback
+
+
   };
 
   return (
@@ -25,6 +32,8 @@ const App = () => {
             rows="5"
             className="block w-full border-gray-300 rounded-md shadow-sm sm:text-sm mb-4 p-2 focus:outline-none"
             placeholder="Start typing here..."
+            minLength={50}
+            required
           ></textarea>
 
           <button
@@ -34,7 +43,9 @@ const App = () => {
             Analyze
           </button>
         </form>
-        <div>
+        <div className={`
+          ${feedback.length > 0 ? 'block' : 'invisible'}
+        `}>
           <h2 className="text-lg font-bold text-gray-800 mb-4">Feedback:</h2>
           <div className="bg-gray-200 p-4 rounded-lg">
             {feedback.map((paragraph, index) => (
